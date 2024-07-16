@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ruda:wght@400;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "poppins", sans-serif;
+  position: relative;
+  background: linear-gradient(130deg, #009,white, #009);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 99hw;
+  height: 99vh;
+  background: wheat;
+  z-index: -1;
+}
+.tabs-one {
+    height: 100vh;
+    width: 100wh;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-tabs .nav-link {
+    color: #400;
+    font-weight: 900;
+    width: 100%;
+    font-size: 16px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: wheat;
+    border: none;
+    color: #400;
+}
+
+.list-group-item {
+    background-color: transparent;
+    color: #000;
+    font-weight: 900;
+    border-bottom: 1px solid wheat;
+}
+
+.list-group-item:hover {
+    background-color: #0009;
+    color: wheat;
+    cursor: pointer;
+}
+
+
+#sec .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    height: 100vh;
+    width: 90%; 
+}
+
+
+#sec .side-image-one {
+    margin-top: 100px;
+    background: #0000;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#sec .fun-side {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    width: 100wh;
+    height: 80vh;
+    border-radius: 10px;
+}
+#sec .fun-side h3 {
+    font-weight: 900;
+    font-family: monospace;
+    font-size: 56px;
+}
+
+#contacts h3,
+#recents h3,
+#driver h3 {
+    font-size: 26px;
+    font-weight: 900;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#driver {
+    
+}
+#driver .truck-details .truck-plate {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: cursive;
+}
+#driver .truck-details .driver-details {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid wheat;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+#driver .map-frame{
+    width: 100%;
+    border: none;
+}
+
+#driver iframe {
+    height: 40vh;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    border: 0;
+}
+
+#driver .truck-request-trans {
+    background: #fff;
+    border: 1px solid wheat;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+}
+#driver button {
+    font-size: 12px;
+    width: 30%;
+    background-color: #004;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+#sec .side-image .span-one {
+    position: relative;
+    top: 35%;
+    left: 9%;
+    transform: translate(-10%, -30%);
+    height: 200px;
+    width: 10px;
+    transform: rotate(-90deg);
+    font-size: 44px;
+    font-weight: 900;
+    color: #600;
+    text-shadow: 0 0 10px #070;
+    line-height: normal;
+}
+
+#sec .side-image span .fas-onetr {
+    font-size: 39px;
+    color: #040;
+    animation: fadeIn 3s ease-in;
+    padding-top: 50%;
+}
+#sec .side-image span .fas-one {
+    font-size: 39px;
+    color: #040;
+    animation: fadeIn 3s ease-in;
+}
+#sec .side-image span .fas-two {
+    font-size: 39px;
+    color: #400;
+    animation: fadeIn 5s ease-in-out;
+}
+#sec .side-image span .fas-three {
+    font-size: 39px;
+    color: #004;
+    animation: fadeIn 7s ease-in;
+}
+
+
+/* small devices */
+
+@media (max-width: 768px) {
+    #sec .side-image {
+        display: none;
+    }
+    #sec .one {
+        width: 100wh;
+        height: 90vh;
+    }
+    .tabs-one {
+        height: 70vh;
+        width: 100%;
+        background: transparent;
+    }
+    .nav-tabs .nav-link {
+        color: #000;
+        font-weight: 900;
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .list-group-item {
+        background-color: transparent;
+        font-size: 12px;
+        color: #000;
+        font-weight: 900;
+        border-bottom: 1px solid wheat;
+    }
+
+
+
+    #driver .truck-request-trans {
+        background: wheat;
+        width: 95%;
+        margin: auto;
+        border-radius: 10px;
+    }
+    #driver button {
+        font-size: 12px;
+        width: 30%;
+    }
+}
