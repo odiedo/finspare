@@ -12,7 +12,7 @@ body {
   padding: 0;
   font-family: "poppins", sans-serif;
   position: relative;
-  background: linear-gradient(130deg, #0002,wheat, #0001, wheat, #0001);
+  background: linear-gradient(135deg, #0002,wheat, #0001, wheat, #0001, wheat, #0001,wheat, #0001);
   overflow: hidden;
 }
 
@@ -198,6 +198,15 @@ body::before {
 /* small devices */
 
 @media (max-width: 768px) {
+    body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: "poppins", sans-serif;
+        position: relative;
+        background: wheat;
+        overflow: hidden;
+    }
     #sec .side-image {
         display: none;
     }
@@ -235,5 +244,7 @@ body::before {
     #driver button {
         font-size: 12px;
         width: 30%;
+        border: 1px solid #004;
+        color: #004;
     }
 }
