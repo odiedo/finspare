@@ -13,6 +13,7 @@ body {
   font-family: "poppins", sans-serif;
   position: relative;
   background: linear-gradient(130deg, #0002,wheat, #0001, wheat, #0001);
+  overflow: hidden;
 }
 
 body::before {
@@ -81,7 +82,7 @@ body::before {
 #sec .fun-side {
     padding: 0;
     margin: 0;
-    color: #000;
+    color: #004;
     width: 100wh;
     height: 80vh;
     border-radius: 10px;
@@ -109,12 +110,14 @@ body::before {
     font-weight: 900;
     text-transform: uppercase;
     font-family: cursive;
+    color: #004;
 }
 #driver .truck-details .driver-details {
     width: 80%;
     margin: auto;
     background-color: #fff;
-    border: 1px solid wheat;
+    color: #004;
+    border: 1px solid #004;
     padding: 5px 20px;
     border-radius: 10px;
 }
@@ -142,8 +145,8 @@ body::before {
 #driver button {
     font-size: 12px;
     width: 30%;
-    background-color: #004;
-    color: #fff;
+    border: 1px solid #004;
+    color: #004;
 }
 
 @keyframes fadeIn {
@@ -225,7 +228,6 @@ body::before {
 
 
     #driver .truck-request-trans {
-        background: wheat;
         width: 95%;
         margin: auto;
         border-radius: 10px;
