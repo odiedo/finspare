@@ -49,7 +49,7 @@
                         </div>
                         <div class="truck-request-trans p-2">
                             <div class="truck-request d-flex justify-content-between p-2">
-                                <button class="btn" onclick="window.location.href='request.html';"><i class="fas fa-wave-square"></i><br>Request</button>
+                                <button class="btn" onclick="window.location.href='./request.html';"><i class="fas fa-wave-square"></i><br>Request</button>
                                 <button class="btn"><i class="fas fa-toolbox"></i><br>Repair</button>
                                 <button class="btn"><i class="fas fa-camera-retro"></i><br>Complete </button>
                             </div>
@@ -64,70 +64,6 @@
         </div>
       </div>
     </main>
-    <script>
-        fetch('get_contacts.php')
-            .then(response => response.json())
-            .then(data => {
-                const contactList = document.getElementById('contactList');
-                data.forEach(contact => {
-                    const li = document.createElement('li');
-                    li.textContent = `${contact.name}: ${contact.phone_number}`;
-                    contactList.appendChild(li);
-                });
-            })
-            .catch(error => console.error('Error fetching contacts:', error));
-        
-        $(document).ready(function() {
-            $('#addContactForm').submit(function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                const formData = $(this).serialize();
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'add_contact.php',
-                    data: formData,
-                    success: function(response) {
-                        $('#alert-placeholder').html(`
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                New contact added successfully.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        `);
-                        $('#addContactForm')[0].reset(); // Reset the form fields
-                        // Optionally, you can refresh the contact list
-                        fetchContacts();
-                    },
-                    error: function() {
-                        $('#alert-placeholder').html(`
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                There was an error adding the contact.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        `);
-                    }
-                });
-            });
-
-            function fetchContacts() {
-                fetch('get_contacts.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        const contactList = document.getElementById('contactList');
-                        contactList.innerHTML = ''; // Clear the existing list
-                        data.forEach(contact => {
-                            const li = document.createElement('li');
-                            li.textContent = `${contact.name}: ${contact.phone_number}`;
-                            contactList.appendChild(li);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching contacts:', error));
-            }
-        });
-    </script>
   <script src="jquery/jquery-3.3.1.min.js"></script>
   <script src="assets/dist/js/bootstrap.bundle.js"></script>
   <script src="assets/dist/js/bootstrap.min.js"></script>
