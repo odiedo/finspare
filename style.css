@@ -7,10 +7,12 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   font-family: "poppins", sans-serif;
   position: relative;
-  background: linear-gradient(130deg, #009,white, #009);
+  background: linear-gradient(130deg, #0002,wheat, #0001, wheat, #0001);
 }
 
 body::before {
@@ -18,13 +20,13 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 99hw;
-  height: 99vh;
+  width: 100hw;
+  height: 100vh;
   background: wheat;
   z-index: -1;
 }
 .tabs-one {
-    height: 100vh;
+    height: 99vh;
     width: 100wh;
     margin: 0;
     padding: 0;
