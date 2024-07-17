@@ -147,7 +147,7 @@ body::before {
 }
 
 #driver .truck-request-trans {
-    background: #fff;
+    background: #0004;
     border: 1px solid wheat;
     width: 80%;
     margin: auto;
@@ -159,7 +159,75 @@ body::before {
     border: 1px solid #004;
     color: #004;
 }
+#driver  .extra-info {
+    text-align: center;
+    color: #004;
+}
 
+#driver .items {
+    display: flex;
+    width: 100%;
+}
+#driver .item-title-one {
+    width: 50%;
+    background-color: #0009;
+    text-align: center;
+    color: wheat;
+    font-weight: 900;
+    padding: 4px;
+    margin: 2px;
+}
+#driver .item-title-two {
+    width: 30%;
+    background-color: #0009;
+    text-align: center;
+    color: wheat;
+    font-weight: 900;
+    padding: 4px;
+    margin: 2px;
+}
+#driver .item-fields {
+    display: flex;
+    color: #002;
+}
+#driver .item-fields input[type='text'] {
+    width: 50%;
+    background-color: #fff;
+    text-align: center;
+    font-weight: 900;
+    padding: 4px;
+    border: none;
+    margin: 2px;
+    outline: none;
+}
+#driver .item-fields input[type='number'] {
+    width: 30%;
+    background-color: #fff;
+    text-align: center;
+    font-weight: 900;
+    padding: 4px;
+    border: none;
+    margin: 2px;
+    outline: none;
+}
+#driver .item-fields button {
+    background-color: #fff;
+    width: 15%;
+    text-align: center;
+    color: red;
+    font-weight: 900;
+    padding: 4px;
+    border: none;
+}
+#driver textarea {
+    width: 80%;
+    background-color: #fff;
+    font-weight: 900;
+    padding: 5px;
+    border: none;
+    margin: 2px;
+    outline: none;
+}
 @keyframes fadeIn {
   from {
       opacity: 0;
