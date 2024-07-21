@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "version": "1.0.0",
-  "main": "send-email.js",
+  "main": "send-mail.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
