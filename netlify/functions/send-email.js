@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'your-odiedopaul@gmail.com', 
+      user: 'odiedopaul@gmail.com', 
       pass: 'oeor ibwd ewpn erqq'     
     }
   });
