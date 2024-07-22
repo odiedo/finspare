@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    const userPhoneNumber = localStorage.getItem('userPhoneNumber');
     $('#addItemBtn').click(function() {
         $('.item-field-details').append(`
             <div class="item-fields">
@@ -21,6 +22,7 @@ document.getElementById('requestForm').addEventListener('submit', async function
     const items = formData.getAll('items[]');
     const quantities = formData.getAll('quantities[]');
     const addInfo = formData.get('add_info');
+    const userPhoneNumber = localStorage.getItem('userPhoneNumber');
 
     try {
         const response = await fetch('/.netlify/functions/send-email', {
@@ -38,8 +40,8 @@ document.getElementById('requestForm').addEventListener('submit', async function
             alertHtml = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     ${result.message}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
+                        <i aria-hidden="true">&times;</i>
                     </button>
                 </div>
             `;
@@ -47,8 +49,8 @@ document.getElementById('requestForm').addEventListener('submit', async function
             alertHtml = `
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     ${result.message}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
+                        <i aria-hidden="true">&times;</i>
                     </button>
                 </div>
             `;
@@ -60,8 +62,8 @@ document.getElementById('requestForm').addEventListener('submit', async function
         const alertHtml = `
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Failed to send request. Please try again later.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
+                    <i aria-hidden="true">&times;</i>
                 </button>
             </div>
         `;

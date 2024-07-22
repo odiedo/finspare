@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
   }
 
   // Parse the request body
-  const { items, quantities, addInfo } = JSON.parse(event.body);
+  const { items, quantities, addInfo, userPhoneNumber } = JSON.parse(event.body);
 
   let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                         <thead>
@@ -34,13 +34,14 @@ exports.handler = async (event, context) => {
   let emailBody = `
     <div style="font-family: Arial, sans-serif; color: #333;">
       <h2>Spare Parts Request</h2>
-      <p>Dear Team,</p>
+      <p>Dear Finesse,</p>
       <p>Please find below the spare parts request:</p>
       ${itemDetails}
       <p><strong>Additional Info:</strong></p>
       <p>${addInfo}</p>
+      <p><b>Phone</b>${userPhoneNumber}</p>
       <p>Best regards,</p>
-      <p>Odiedo</p>
+      <p>client</p>
     </div>
   `;
 
