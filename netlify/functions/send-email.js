@@ -1,10 +1,25 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
+
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      }
+    };
+  }
+  
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({ message: 'Method Not Allowed' })
+      body: JSON.stringify({ message: 'Method Not Allowed' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     };
   }
 
@@ -68,12 +83,18 @@ exports.handler = async (event, context) => {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent successfully' })
+      body: JSON.stringify({ message: 'Email sent successfully' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     };
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Failed to send email', error })
+      body: JSON.stringify({ message: 'Failed to send email', error }),
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     };
   }
 };
