@@ -343,7 +343,7 @@ body::before {
         background-color: #0001;
     }
     #driver textarea {
-        width: 100%;
+        width: 90%;
         background-color: #0001;
     }
     #driver .item-fields button {
@@ -376,11 +376,16 @@ body::before {
     #driver .form-buttons .request-item {
         font-size: 12px;
         width: 48%;
-        padding: 8px;
-        border-radius: 2px;
+        padding: 10px;
+        border-radius: 4px;
         border: 1px solid #000;
         color: #000;
         font-weight: 900;
         background-color: #fff;
+    }
+    #requestForm {
+        height: 70vh;
+        overflow: scroll;
+
     }
 }
