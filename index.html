@@ -34,42 +34,28 @@
                         <div class="d-flex justify-content-between p-2 mt-1">
                             <h3>FinSpare</h3>
                         </div>
-                        <div class="truck-details p-2 text-center">
-                            <h3 class="mt-2 text-left">Spare part Request</h3>
-                            <span>Please enter the spare parts needed and click request to complete your order</span>
+                        <div class="truck-details pb-2">
+                            <div class="truck-plate">
+                                <h4>KBH 345Z</h4>
+                            </div>
+                            <div class="driver-details">
+                                <span><i class="far fa-user-circle"></i> <i class="fas "> Odiedo Paul</i></span><br>
+                                <span><i class="fas fa-phone-square-alt"></i> <i class="fas "> +254 759 680 813</i></span><br>
+                                <span><i class="far fa-envelope"></i> <i class="fas "> odiedo@gmail.com</i></span>
+                            </div>
                         </div>
-                        <!-- Alert container -->
-                        <div id="alertContainer" class="container mt-3"></div>
-                        <form id="requestForm">
-                            <div class="item-title1 d-flex justify-content-between mt-2 p-2">
-                                <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
+                        <div class="map-frame">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d63677.445343022635!2d39.618213971379475!3d-4.052967066957563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sspare%20parts%20store%2C%20kenya!5e0!3m2!1sen!2ske!4v1721122510891!5m2!1sen!2ske" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                        </div>
+                        <div class="truck-request-trans p-2">
+                            <div class="truck-request d-flex justify-content-between p-2">
+                                <button class="btn" onclick="window.location.href='./request.html';"><i class="fas fa-wave-square"></i><br>Request</button>
+                                <button class="btn" onclick="window.location.href='./mail.html';"><i class="fas fa-toolbox"></i><br>Repair</button>
+                                <button class="btn"><i class="fas fa-camera-retro"></i><br>Complete </button>
                             </div>
-                            <div class="items">
-                                <div class="item-title-one">
-                                    <span>Item(s)</span>
-                                </div>
-                                <div class="item-title-two">
-                                    <span>Quantity</span>
-                                </div>
-                            </div>
-                            <div class="item-field-details">
-                                <div class="item-fields">
-                                    <input type="text" name="items[]" placeholder="Item name">
-                                    <input type="number" name="quantities[]" placeholder="Qnty">
-                                    <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="additional-item mt-1">
-                                <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
-                                <textarea name="add_info" placeholder="Enter additional info here..." rows="4" id=""></textarea>
-                            </div>
-
-                            <div class="form-buttons">
-                                <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i> Add item</button>
-                                <button type="submit" class="request-item"><i class="fas fa-paper-plane"></i> Send Request</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                    <hr>
                     <div class="extra-info">
                         <span>Click request to order spare parts from our nearest shop(s)</span>
                     </div>
@@ -81,6 +67,5 @@
   <script src="jquery/jquery-3.3.1.min.js"></script>
   <script src="assets/dist/js/bootstrap.bundle.js"></script>
   <script src="assets/dist/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
