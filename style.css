@@ -105,6 +105,12 @@ body::before {
     font-weight: 900;
     animation: fadeIn 1s ease-in-out;
 }
+#driver .truck-details h3 {
+    color: wheat;
+    font-size: 26px;
+    font-weight: 900;
+    animation: fadeIn 1s ease-in-out;
+}
 
 #driver .truck-details {
     background-color: #0004;
@@ -159,7 +165,12 @@ body::before {
     border: 1px solid #004;
     color: #004;
 }
-#driver  .extra-info {
+#driver .extra-info {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -1%);
+    width: 80%;
     text-align: center;
     color: #004;
 }
@@ -283,7 +294,7 @@ body::before {
         padding: 0;
         font-family: "poppins", sans-serif;
         position: relative;
-        background: wheat;
+        background: #fff;
         overflow: hidden;
     }
     #sec .side-image {
@@ -315,16 +326,61 @@ body::before {
     }
 
 
+    #driver .item-title-one {
+        width: 60%;
+    }
+    #driver .item-title-two {
+        width: 30%;
+    }
+
+    #driver .item-fields input[type='text'] {
+        width: 60%;
+        background-color: #0001;
+    }
+
+    #driver .item-fields input[type='number'] {
+        width: 30%;
+        background-color: #0001;
+    }
+    #driver textarea {
+        width: 100%;
+        background-color: #0001;
+    }
+    #driver .item-fields button {
+        background-color: #fff;
+        width: 8%;
+        text-align: center;
+        color: red;
+        font-weight: 900;
+        padding: 4px;
+        border: none;
+    }
+
 
     #driver .truck-request-trans {
         width: 95%;
         margin: auto;
         border-radius: 10px;
     }
-    #driver button {
+    #driver .extra-info {
+        display: none;
+    }
+    #driver .form-buttons {
+        position: fixed;
+        bottom: 1%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    #driver .form-buttons .add-item,
+    #driver .form-buttons .request-item {
         font-size: 12px;
-        width: 30%;
-        border: 1px solid #004;
-        color: #004;
+        width: 48%;
+        padding: 8px;
+        border-radius: 2px;
+        border: 1px solid #000;
+        color: #000;
+        font-weight: 900;
+        background-color: #fff;
     }
 }

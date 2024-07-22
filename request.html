@@ -31,13 +31,16 @@
                 </div>
                 <div class="col-md-7" id="driver">
                     <div class="driver">
+                        <div class="d-flex justify-content-between p-2 mt-1">
+                            <h3>FinSpare</h3>
+                        </div>
                         <div class="truck-details p-2 text-center">
                             <h3 class="mt-2 text-left">Spare part Request</h3>
                             <span>Please enter the spare parts needed and click request to complete your order</span>
                         </div>
                         <form id="requestForm">
                             <div class="item-title1 d-flex justify-content-between mt-2 p-2">
-                                <h6>Items</h6> <i class="fas fa-question-circle"></i>
+                                <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
                             </div>
                             <div class="items">
                                 <div class="item-title-one">
@@ -55,13 +58,13 @@
                                 </div>
                             </div>
                             <div class="additional-item mt-1">
-                                <label for="add_info">Additional Info</label>
+                                <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
                                 <textarea name="add_info" placeholder="Enter additional info here..." rows="4" id=""></textarea>
                             </div>
 
                             <div class="form-buttons">
-                                <button type="button" id="addItemBtn">Add item</button>
-                                <button type="submit">Send Request</button>
+                                <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i> Add item</button>
+                                <button type="submit" class="request-item"><i class="fas fa-paper-plane"></i> Send Request</button>
                             </div>
                         </form>
                     </div>
