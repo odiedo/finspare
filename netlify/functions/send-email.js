@@ -39,7 +39,7 @@ exports.handler = async (event, context) => {
       ${itemDetails}
       <p><strong>Additional Info:</strong></p>
       <p>${addInfo}</p>
-      <p><b>Phone</b>${userPhoneNumber}</p>
+      <p><b>Phone:</b>${userPhoneNumber}</p>
       <p>Best regards,</p>
       <p>client</p>
     </div>

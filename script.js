@@ -1,5 +1,13 @@
 $(document).ready(function() {
+    // Retrieve phone number from localStorage
     const userPhoneNumber = localStorage.getItem('userPhoneNumber');
+    if (userPhoneNumber) {
+        console.log('Phone Number:', userPhoneNumber);
+        $('#phoneNumberDisplay').text(`Phone Number: ${userPhoneNumber}`);
+    } else {
+        console.error('No phone number found in localStorage');
+    }
+
     $('#addItemBtn').click(function() {
         $('.item-field-details').append(`
             <div class="item-fields">
@@ -22,7 +30,7 @@ document.getElementById('requestForm').addEventListener('submit', async function
     const items = formData.getAll('items[]');
     const quantities = formData.getAll('quantities[]');
     const addInfo = formData.get('add_info');
-    const userPhoneNumber = localStorage.getItem('userPhoneNumber');
+    const userPhoneNumber = localStorage.getItem('userPhoneNumber'); // Retrieve phone number
 
     try {
         const response = await fetch('/.netlify/functions/send-email', {
@@ -30,7 +38,7 @@ document.getElementById('requestForm').addEventListener('submit', async function
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ items, quantities, addInfo })
+            body: JSON.stringify({ items, quantities, addInfo, userPhoneNumber })
         });
 
         const result = await response.json();

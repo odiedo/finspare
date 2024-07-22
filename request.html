@@ -40,6 +40,8 @@
                             <h3 class="mt-2 text-left">Spare part Request</h3>
                             <span>Please enter the spare parts needed and click request to complete your order</span>
                         </div>
+                        <!-- Display phone number -->
+                        <div id="phoneNumberDisplay" class="text-left"></div>
                         <form id="requestForm">
                             <div class="item-title1 d-flex justify-content-between mt-2 p-2">
                                 <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
@@ -64,9 +66,9 @@
                                 <textarea name="add_info" placeholder="Enter additional info here..." rows="4" id=""></textarea>
                             </div>
 
-                            <div class="form-buttons d-flex justify-content-between">
+                            <div class="form-buttons">
                                 <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i> Add item</button>
-                                <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> Send Request</button>
+                                <button type="submit" class="request-item"><i class="fas fa-paper-plane"></i> Send Request</button>
                             </div>
                         </form>
                     </div>
