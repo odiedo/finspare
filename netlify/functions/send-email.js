@@ -11,7 +11,40 @@ exports.handler = async (event, context) => {
   // Parse the request body
   const { items, quantities, addInfo } = JSON.parse(event.body);
 
-  const itemDetails = items.map((item, index) => `${item}: ${quantities[index]}`).join('\n');
+  let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+                        <thead>
+                          <tr>
+                            <th style="background-color: #f2f2f2;">Item</th>
+                            <th style="background-color: #f2f2f2;">Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>`;
+  
+  items.forEach((item, index) => {
+    itemDetails += `<tr>
+                      <td>${item}</td>
+                      <td>${quantities[index]}</td>
+                    </tr>`;
+  });
+
+  itemDetails += ` </tbody>
+                 </table>`;
+
+  // HTML content for the email
+  let emailBody = `
+    <div style="font-family: Arial, sans-serif; color: #333;">
+      <h2>Spare Parts Request</h2>
+      <p>Dear Team,</p>
+      <p>Please find below the spare parts request:</p>
+      ${itemDetails}
+      <p><strong>Additional Info:</strong></p>
+      <p>${addInfo}</p>
+      <p>Best regards,</p>
+      <p>Odiedo</p>
+    </div>
+  `;
+
+
 
   // Create a transporter object using SMTP transport
   let transporter = nodemailer.createTransport({
@@ -27,7 +60,7 @@ exports.handler = async (event, context) => {
     from: 'odiedopaul@gmail.com',    
     to: 'odiedopaul@gmail.com',                      // Email address to send to
     subject: 'Spare part Request',               // Subject line
-    text: `Spare Parts Request:\n\n${itemDetails}\nAdditional Info:\n${addInfo}`                   // Plain text body
+    html: emailBody
   };
 
   // Send email
