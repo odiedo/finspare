@@ -68,7 +68,7 @@ exports.handler = async (event, context) => {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent successfully' })
+      body: JSON.stringify({ message: 'Request sent successfully' })
     };
   } catch (error) {
     return {

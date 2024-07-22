@@ -1,4 +1,3 @@
-// script.js
 $(document).ready(function() {
     $('#addItemBtn').click(function() {
         $('.item-field-details').append(`
@@ -15,7 +14,7 @@ $(document).ready(function() {
     });
 });
 
-document.getElementById('requestForm').addEventListener('submit', async function (event){
+document.getElementById('requestForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
@@ -23,22 +22,49 @@ document.getElementById('requestForm').addEventListener('submit', async function
     const quantities = formData.getAll('quantities[]');
     const addInfo = formData.get('add_info');
 
-    const response = await fetch('/.netlify/functions/send-email', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ items, quantities, addInfo })
-    });
+    try {
+        const response = await fetch('/.netlify/functions/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ items, quantities, addInfo })
+        });
 
-    if (response.ok) {
         const result = await response.json();
-        alert(result.message);
-    } else {
-        const errorResult = await response.json();
-        console.error('Error sending spare request email:', errorResult);
-        alert('Failed to send request, kindly try again');
+
+        let alertHtml = '';
+        if (response.ok) {
+            alertHtml = `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ${result.message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+        } else {
+            alertHtml = `
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    ${result.message}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+        }
+
+        document.getElementById('alertContainer').innerHTML = alertHtml;
+    } catch (error) {
+        console.error('Error:', error);
+        const alertHtml = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Failed to send request. Please try again later.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
+        document.getElementById('alertContainer').innerHTML = alertHtml;
     }
 });
-
-
