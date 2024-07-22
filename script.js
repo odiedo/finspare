@@ -18,12 +18,12 @@ $(document).ready(function() {
 document.getElementById('requestForm').addEventListener('submit', async function (event){
     event.preventDefault();
 
-    const formData = new formData(this);
+    const formData = new FormData(this);
     const items = formData.getAll('items[]');
     const quantities = formData.getAll('quantities[]');
     const addInfo = formData.get('add_info');
 
-    const response = await fetch('./netlify/functions/send-email', {
+    const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
