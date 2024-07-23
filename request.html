@@ -43,44 +43,43 @@
                         <!-- Display phone number -->
                         <div id="phoneNumberDisplay" class="text-left"></div>
                         <form id="requestForm">
-                            <div class="audio-recording mt-3">
-                                <label for="audioMessage" class="font-weight-bold">Audio Spare Request:</label><br>
-                                <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone"></i><br> Start Recording</button>
-                                <button type="button" id="stopRecordingBtn" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
-                                <br>
-                                <audio id="audioPlayback" controls style="display:none;"></audio>
-                                <input type="hidden" name="audioMessage" id="audioMessage">
-                            </div>
-                            <div class="item-title1 d-flex justify-content-between mt-2 p-2">
-                                <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
-                            </div>
-                            <div class="items">
-                                <div class="item-title-one">
-                                    <span>Item(s)</span>
+                            <div class="form-details">
+                                <div class="audio-recording mt-3">
+                                    <label for="audioMessage" class="font-weight-bold">Audio Spare Request:</label><br>
+                                    <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone"></i><br> Start Recording</button>
+                                    <button type="button" id="stopRecordingBtn" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
+                                    <br>
+                                    <audio id="audioPlayback" controls style="display:none;"></audio>
+                                    <input type="hidden" name="audioMessage" id="audioMessage">
                                 </div>
-                                <div class="item-title-two">
-                                    <span>Quantity</span>
+                                <div class="item-title1 d-flex justify-content-between mt-2 p-2">
+                                    <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="items">
+                                    <div class="item-title-one">
+                                        <span>Item(s)</span>
+                                    </div>
+                                    <div class="item-title-two">
+                                        <span>Quantity</span>
+                                    </div>
+                                </div>
+                                <div class="item-field-details">
+                                    <div class="item-fields">
+                                        <input type="text" name="items[]" placeholder="Item name">
+                                        <input type="number" name="quantities[]" placeholder="Qnty">
+                                        <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="additional-item mt-1 mb-4">
+                                    <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
+                                    <textarea name="add_info" placeholder="Enter additional info here..." rows="2" id=""></textarea>
                                 </div>
                             </div>
-                            <div class="item-field-details">
-                                <div class="item-fields">
-                                    <input type="text" name="items[]" placeholder="Item name">
-                                    <input type="number" name="quantities[]" placeholder="Qnty">
-                                    <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
-                                </div>
+                            <div class="form-buttons ml-2 d-flex justify-content-between">
+                                <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i><br> Add item</button>
+                                <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> <br> Send Request</button>
                             </div>
-                            <div class="additional-item mt-1 mb-4">
-                                <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
-                                <textarea name="add_info" placeholder="Enter additional info here..." rows="2" id=""></textarea>
-                            </div><br><br>
-                        
-                    </div>
-
-                    <div class="form-buttons pt-4 d-flex justify-content-between">
-                        <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i><br> Add item</button>
-                        <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> <br> Send Request</button>
-                    </div>
-
+                        </div> 
                     </form>
                 </div>
             </div>        
