@@ -39,16 +39,16 @@ exports.handler = async (event, context) => {
       ${itemDetails}
       <p><strong>Additional Info:</strong></p>
       <p>${addInfo}</p>
-      <p><b>Phone:</b>${userPhoneNumber}</p>
+      <p><b>Phone:</b> ${userPhoneNumber}</p>
       <p>Best regards,</p>
-      <p>client</p>
+      <p>Client</p>
     </div>
   `;
 
-  // Audio attachment if audio is added
-  let attachment = [];
+  // Add audio attachment if available
+  let attachments = [];
   if (audioBase64) {
-    attachment.push({
+    attachments.push({
       filename: 'audioMessage.wav',
       content: audioBase64,
       encoding: 'base64'
@@ -59,17 +59,18 @@ exports.handler = async (event, context) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'odiedopaul@gmail.com', 
-      pass: 'oeor ibwd ewpn erqq'     
+      user: 'odiedopaul@gmail.com',
+      pass: 'oeor ibwd ewpn erqq'
     }
   });
 
   // Email options
   let mailOptions = {
-    from: 'esociety254@gmail.com',    
+    from: 'esociety254@gmail.com',
     to: 'odiedopaul@gmail.com',
     subject: 'Spare part Request',
-    html: emailBody
+    html: emailBody,
+    attachments: attachments
   };
 
   // Send email
