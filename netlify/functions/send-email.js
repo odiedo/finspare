@@ -67,7 +67,7 @@ exports.handler = async (event, context) => {
   // Email options
   let mailOptions = {
     from: 'esociety254@gmail.com',
-    to: 'odiedopaul@gmail.com, esociety254@gmail.com',
+    to: 'odiedopaul@gmail.com',
     subject: 'Spare part Request',
     html: emailBody,
     attachments: attachments
