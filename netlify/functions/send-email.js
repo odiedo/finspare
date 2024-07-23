@@ -39,9 +39,9 @@ exports.handler = async (event, context) => {
       ${itemDetails}
       <p><strong>Additional Info:</strong></p>
       <p>${addInfo}</p>
-      <p><b>Phone:</b> ${userPhoneNumber}</p>
+      <br>
       <p>Best regards,</p>
-      <p>Client</p>
+      <p>Client: ${userPhoneNumber}</p>
     </div>
   `;
 
