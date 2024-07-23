@@ -49,7 +49,7 @@ exports.handler = async (event, context) => {
   let attachments = [];
   if (audioBase64) {
     attachments.push({
-      filename: 'audioMessage.mp4',
+      filename: 'audioMessage.mp3',
       content: audioBase64,
       encoding: 'base64'
     });
