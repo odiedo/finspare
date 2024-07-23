@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
   }
 
   // Parse the request body
-  const { items, quantities, addInfo, userPhoneNumber } = JSON.parse(event.body);
+  const { items, quantities, addInfo, userPhoneNumber, audioBase64 } = JSON.parse(event.body);
 
   let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                         <thead>
@@ -45,7 +45,15 @@ exports.handler = async (event, context) => {
     </div>
   `;
 
-
+  // Audio attachment if audio is added
+  let attachment = [];
+  if (audioBase64) {
+    attachment.push({
+      filename: 'audioMessage.wav',
+      content: audioBase64,
+      encoding: 'base64'
+    });
+  }
 
   // Create a transporter object using SMTP transport
   let transporter = nodemailer.createTransport({

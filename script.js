@@ -23,6 +23,45 @@ $(document).ready(function() {
     });
 });
 
+
+
+
+// Audio Script
+let mediaRecorder;
+let audioChunks = [];
+let audioBlob;
+
+document.getElementById('startRecordingBtn').addEventListener('click', async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+
+    mediaRecorder.start();
+
+    mediaRecorder.ondataavailable = event => {
+        audioChunks.push(event.data);
+    };
+
+    mediaRecorder.onstop = () => {
+        audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        document.getElementById('audioPlayback').src = audioUrl;
+        document.getElementById('audioPlayback').style.display = 'block';
+        document.getElementById('audioMessage').value = audioBlob;
+
+        audioChunks = [];
+    };
+
+    document.getElementById('startRecordingBtn').disabled = true;
+    document.getElementById('stopRecordingBtn').disabled = false;
+});
+
+document.getElementById('stopRecordingBtn').addEventListener('click', () => {
+    mediaRecorder.stop();
+
+    document.getElementById('startRecordingBtn').disabled = false;
+    document.getElementById('stopRecordingBtn').disabled = true;
+});
+
 document.getElementById('requestForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -30,15 +69,32 @@ document.getElementById('requestForm').addEventListener('submit', async function
     const items = formData.getAll('items[]');
     const quantities = formData.getAll('quantities[]');
     const addInfo = formData.get('add_info');
-    const userPhoneNumber = localStorage.getItem('userPhoneNumber'); // Retrieve phone number
+    // retrieve phone number from localstorage
+    const userPhoneNumber = localStorage.getItem('userPhoneNumber');
+    
+    // Convert audioBlob to Base64
+    let audioBase64 = '';
+    if (audioBlob) {
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = function() {
+            audioBase64 = reader.result.split(',')[1];
+            
+            sendFormData({ items, quantities, addInfo, userPhoneNumber, audioBase64 });
+        };
+    } else {
+        sendFormData({ items, quantities, addInfo, userPhoneNumber, audioBase64 });
+    }
+});
 
+async function sendFormData(data) {
     try {
         const response = await fetch('/.netlify/functions/send-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ items, quantities, addInfo, userPhoneNumber })
+            body: JSON.stringify(data)
         });
 
         const result = await response.json();
@@ -77,4 +133,4 @@ document.getElementById('requestForm').addEventListener('submit', async function
         `;
         document.getElementById('alertContainer').innerHTML = alertHtml;
     }
-});
+}
