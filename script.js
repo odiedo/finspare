@@ -33,9 +33,15 @@ let audioBlob;
 
 document.getElementById('startRecordingBtn').addEventListener('click', async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const startRec = document.getElementById('startRecordingBtn');
+    const stopRec = document.getElementById('stopRecordingBtn');
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.start();
+    startRec.style.display = 'none';
+    stopRec.style.display = 'block';
+    stopRec.style.animation = 'scale infinite 2s';
+    
 
     mediaRecorder.ondataavailable = event => {
         audioChunks.push(event.data);
@@ -57,9 +63,17 @@ document.getElementById('startRecordingBtn').addEventListener('click', async () 
 
 document.getElementById('stopRecordingBtn').addEventListener('click', () => {
     mediaRecorder.stop();
+    const startRec = document.getElementById('startRecordingBtn');
+    const stopRec = document.getElementById('stopRecordingBtn');
+    const  submitReq = document.getElementById('submitReq');
+    stopRec.style.display = 'none';
+    startRec.style.display = 'block';
+    submitReq.style.display = 'block';
+    startRec.style.animation = 'none';
+    stopRec.style.animation = 'none';
 
-    document.getElementById('startRecordingBtn').disabled = false;
-    document.getElementById('stopRecordingBtn').disabled = true;
+    startRec.disabled = false;
+    stopRec.disabled = true;
 });
 
 document.getElementById('requestForm').addEventListener('submit', async function (event) {

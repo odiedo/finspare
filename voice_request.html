@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Odiedo Paul">
+    <title>myFinance</title>
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="#style.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+        main {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+            height: -webkit-fill-available;
+            max-height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .dashboard {
+            padding: 20px;
+        }
+        #requestForm {
+            position: relative;
+            top: 50%;
+            left: 20%;
+            transform: translate(-20%, -50%);
+            text-align: center;
+        }
+        .audio-recording .btn {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: blueviolet;
+            color: #fff;
+            font-weight: 900;
+        }
+        .audio-recording .request-item {
+            width: 150px;
+            height: 40px;
+            border-radius: 5%;
+            background-color: blueviolet;
+            color: #fff;
+            font-weight: 900;
+        }
+        .audio-display {
+            width: 90%;
+        }
+
+        .audio-display audio {
+            width: 100%;
+        }
+
+        .balance .btn:hover {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: blue;
+            color: #fff;
+            font-weight: 900;
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }   
+        }
+        
+    </style>
+</head>
+<body class="d-flex h-100 text-dark">
+    <main>
+        <!-- Side nav bar -->
+        <div class="d-flex flex-column shadow flex-shrink-0 bg-light" style="width: 5.5rem; padding-top: 5%; color: blueviolet;">
+            <a href="index.html" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+                <span style="font-weight:900; color: #000; font-family: cursive;">FinSpare</span>
+            </a>
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                <li class="nav-item">
+                    <a href="analysis.html" class="nav-link  text-light py-3 " title="Withdraw" data-bs-toggle="tooltip" style="border: 1px solid ; background: blueviolet ;">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link py-3 border-bottom" title="Save" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#saveModal">
+                        <i class="fas fa-wave-square"  style="color: blueviolet" ></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#withdrawModal">
+                        <i class="fas fa-microphone"  style="color: blueviolet"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="analysis.html" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip">
+                        <i class="fas fa-toolbox"  style="color: blueviolet"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="chama.html" class="nav-link py-3 border-bottom" title="Table Banking" data-bs-toggle="tooltip" data-bs-placement="right">
+                        <i class="fas fa-hand-holding"  style="color: blueviolet"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="dropdown border-top">
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/img/bg/bg-1.jpg" alt="mdo" width="24" height="24" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid" style="width: 95.5rem; background: #0001; overflow-x: scroll; ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row mb-4">
+                        <div class="col-md-12 shadow">
+                            <h3 class="text-center pt-4 px-4" style="color: blueviolet; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="alertContainer" class="container mt-2"></div>
+                        </div>
+                    </div>
+                    <form id="requestForm">
+                        <div class="audio-recording text-center mt-3">
+                            <center>
+                                <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone fa-2x"></i><br> Start Recording</button>
+                                <button type="button" id="stopRecordingBtn" class="btn btn-secondary" style="display: none;" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
+                            </center>
+
+                            <br>
+                            <div class="audio-display">
+                               <center> <audio id="audioPlayback" controls style="display:none;"></audio></center>
+                            </div>
+                            <div class="p-2 mt-4" id="submitReq" style="display:none;">
+                                <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> Submit</button>
+                            </div>
+                            <input type="hidden" name="audioMessage" id="audioMessage">
+                            <h6>click to start recording and click submit to send your request:</h6>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="assets/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
