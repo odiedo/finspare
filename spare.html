@@ -1,198 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Odiedo Paul">
-    <title>myFinance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSpare</title>
     <link rel="stylesheet" href="assets/fonts/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/bootstrap.css" rel="stylesheet">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="#style.css" rel="stylesheet">
-    <style>
-        body {
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-        }
-        main {
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100vh;
-            height: -webkit-fill-available;
-            max-height: 100vh;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
-        .dashboard {
-            padding: 20px;
-        }
-        #submitPhoneNumber {
-            color: #fff;
-            background-color: blueviolet;
-            font-weight: 900;
-        }
-        .balance {
-            position: relative;
-            top: 50%;
-            left: 20%;
-            transform: translate(-20%, -50%);
-        }
-
-        .balance .btn {
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            background-color: blueviolet;
-            color: #fff;
-            font-weight: 900;
-        }
-        .balance .btn:hover {
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            background-color: blue;
-            color: #fff;
-            font-weight: 900;
-        }
-
-        @keyframes scale {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }   
-        }
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="d-flex h-100 text-dark">
-    <main>
-        <!-- Side nav bar -->
-        <div class="d-flex flex-column shadow flex-shrink-0 bg-light" style="width: 5.5rem; padding-top: 5%; color: blueviolet;">
-            <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-                <span style="font-weight:900; color: #000; font-family: cursive;">FinSpare</span>
-            </a>
-            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-                <li class="nav-item">
-                    <a href="analysis.html" class="nav-link  text-light py-3 " title="Withdraw" data-bs-toggle="tooltip" style="border: 1px solid ; background: blueviolet ;">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link py-3 border-bottom" title="Save" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#saveModal">
-                        <i class="fas fa-wave-square"  style="color: blueviolet" ></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#withdrawModal">
-                        <i class="fas fa-microphone"  style="color: blueviolet"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="analysis.html" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip">
-                        <i class="fas fa-toolbox"  style="color: blueviolet"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="chama.html" class="nav-link py-3 border-bottom" title="Table Banking" data-bs-toggle="tooltip" data-bs-placement="right">
-                        <i class="fas fa-hand-holding"  style="color: blueviolet"></i>
-                    </a>
-                </li>
-            </ul>
-            <div class="dropdown border-top">
-                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="assets/img/bg/bg-1.jpg" alt="mdo" width="24" height="24" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="container-fluid" style="width: 95.5rem; background: #0001; overflow-x: scroll; ">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row mb-4">
-                        <div class="col-md-12 shadow">
-                            <h3 class="text-center pt-4 px-4" style="color: blueviolet; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
+<body>
+    <main id="sec">
+      <div class="container-fluid">
+        <div class="content">
+            <div class="row one bg-transparent border-0">
+                <div class="col-md-5 side-image p-0 m-0">
+                    <div class="side-image-one p-0 m-0 d-flex justify-content-center">
+                        <!-- <img src="assets/img/b1.jpg" alt=""> -->
+                        <div class="span-one mr-2">
+                            <span>FinSpare</span>
                         </div>
-                    </div>
-
-
-                    <!-- send request -->
-                    <div class="balance text-center p-4 m-4">
-                        <p>
-                            <h1 style="font-weight: 900; animation: scale 3s infinite;">
-                                <button class="btn" data-toggle="modal" data-target="#phoneNumberModal"><i class="fas fa-wave-square"></i><br>Request</button>
-                            </h1>
-                            <h6>click to request:</h6>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Phone Number Modal -->
-            <div class="modal fade" id="phoneNumberModal" tabindex="-1" role="dialog" aria-labelledby="phoneNumberModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <input type="number" id="userPhoneNumber" class="form-control" placeholder="Enter your phone number">
-                            <br>
-                            <p>Select your convenient method you wish to use to request for the sparepart</p>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="voice" id="voice">
-                                <label class="form-check-label" for="voice"><i class="fas fa-microphone"></i> Voice request</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="voice" id="text">
-                                <label class="form-check-label" for="text"><i class="fas fa-keyboard"></i> Type request</label>
-                            </div>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn " id="submitPhoneNumber">Submit</button>
-                        </div>
+                        <span class="pt-4">
+                            <i class="fas fa-car-battery fa-4x fas-onetr"></i><br>
+                            <i class="fas fas-one">Fast</i><br>
+                            <i class="fas fas-two">Affordable</i><br>
+                            <i class="fas fas-three">Reliable</i><br>
+                        </span>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-7" id="driver">
+                    <div class="driver">
+                        <!-- Alert container -->
+                        <div id="alertContainer" class="container mt-2"></div>
+                        <div class="d-flex justify-content-between p-2 mt-1">
+                            <h3>FinSpare</h3>
+                        </div>
+                        <div class="truck-details p-2 text-center">
+                            <h3 class="mt-2 text-left">Spare part Request</h3>
+                            <span>Please enter the spare parts needed and click request to complete your order</span>
+                        </div>
+                        <!-- Display phone number -->
+                        <div id="phoneNumberDisplay" class="text-left"></div>
+                        <form id="requestForm">
+                            <div class="form-details">
+                                <div class="audio-recording mt-3">
+                                    <label for="audioMessage" class="font-weight-bold">Audio Spare Request:</label><br>
+                                    <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone"></i><br> Start Recording</button>
+                                    <button type="button" id="stopRecordingBtn" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
+                                    <br>
+                                    <audio id="audioPlayback" controls style="display:none;"></audio>
+                                    <input type="hidden" name="audioMessage" id="audioMessage">
+                                </div>
+                                <div class="item-title1 d-flex justify-content-between mt-2 p-2">
+                                    <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="items">
+                                    <div class="item-title-one">
+                                        <span>Item(s)</span>
+                                    </div>
+                                    <div class="item-title-two">
+                                        <span>Quantity</span>
+                                    </div>
+                                </div>
+                                <div class="item-field-details">
+                                    <div class="item-fields">
+                                        <input type="text" name="items[]" placeholder="Item name">
+                                        <input type="number" name="quantities[]" placeholder="Qnty">
+                                        <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="additional-item mt-1 mb-4">
+                                    <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
+                                    <textarea name="add_info" placeholder="Enter additional info here..." rows="2" id=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-buttons ml-2 d-flex justify-content-between">
+                                <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i><br> Add item</button>
+                                <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> <br> Send Request</button>
+                            </div>
+                        </form>
+                    </div> 
+                    
+                </div>
+            </div>        
         </div>
+      </div>
     </main>
-    <script>
-        document.getElementById('submitPhoneNumber').addEventListener('click', function() {
-            const phoneNumber = document.getElementById('userPhoneNumber').value;
-            if(phoneNumber) {
-                localStorage.setItem('userPhoneNumber', phoneNumber);
-                const voice = document.getElementById('voice').checked;
-                if(voice) {
-                    window.location.href = './voice_request.html';
-                } else {
-                    window.location.href = './text_request.html';
-                }
-            } else {
-                alert('Please enter a phone number');
-            }
-        });
-    </script>
-    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
-    <script src="assets/dist/js/bootstrap.bundle.js"></script>
-    <script src="assets/dist/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+  <script src="jquery/jquery-3.3.1.min.js"></script>
+  <script src="assets/dist/js/bootstrap.bundle.js"></script>
+  <script src="assets/dist/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

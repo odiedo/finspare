@@ -100,22 +100,22 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link py-3 border-bottom" title="Save" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#saveModal">
-                        <i class="fas fa-wave-square"  style="color: blue" ></i>
+                    <a href="#" class="nav-link py-3 border-bottom" title="Type Request" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#saveModal">
+                        <i class="fas fa-keyboard"  style="color: blue" ></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#withdrawModal">
+                    <a href="#" class="nav-link py-3 border-bottom" title="Voice request" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#phoneNumberVoice">
                         <i class="fas fa-microphone"  style="color: blue"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="analysis.html" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip">
+                    <a href="#" class="nav-link py-3 border-bottom" title="Mechanic" data-bs-toggle="tooltip">
                         <i class="fas fa-toolbox"  style="color: blue"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="chama.html" class="nav-link py-3 border-bottom" title="Table Banking" data-bs-toggle="tooltip" data-bs-placement="right">
+                    <a href="#" class="nav-link py-3 border-bottom" title="Received Tool" data-bs-toggle="tooltip" data-bs-placement="right">
                         <i class="fas fa-hand-holding"  style="color: blue"></i>
                     </a>
                 </li>
@@ -141,8 +141,6 @@
                             <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
                         </div>
                     </div>
-
-
                     <!-- send request -->
                     <div class="request text-center p-4 m-4">
                         <p>
@@ -161,12 +159,13 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div class="modal-body">
+                            <div id="alertContainerReqOne" class="container mt-2"></div>
                             <input type="number" id="userPhoneNumber" class="form-control" placeholder="Enter your phone number">
                             <br>
                             <p>Select your convenient method you wish to use to request for the sparepart</p>
@@ -182,7 +181,29 @@
                         
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn " id="submitPhoneNumber">Submit</button>
+                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumber">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="phoneNumberVoice" tabindex="-1" role="dialog" aria-labelledby="phoneNumberVoiceLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="alertContainerReq" class="container mt-2"></div>
+                            <input type="number" id="userPhoneNumberVoice" class="form-control" placeholder="Enter your phone number">
+                            <input type="radio" name="voice" id="voiceOne" checked hidden>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumberOne">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -190,19 +211,31 @@
         </div>
     </main>
     <script>
-        document.getElementById('submitPhoneNumber').addEventListener('click', function() {
-            const phoneNumber = document.getElementById('userPhoneNumber').value;
-            if(phoneNumber) {
-                localStorage.setItem('userPhoneNumber', phoneNumber);
-                const voice = document.getElementById('voice').checked;
-                if(voice) {
-                    window.location.href = './voice_request.html';
+        document.querySelectorAll('.submitPhoneNumber').forEach(button => {
+            button.addEventListener('click', function() {
+                const phoneNumber = button.id === 'submitPhoneNumber' ? document.getElementById('userPhoneNumber').value : document.getElementById('userPhoneNumberVoice').value;
+                const alertContainer = document.getElementById('alertContainerReq');
+                const alertContainerOne = document.getElementById('alertContainerReqOne');
+                if(phoneNumber) {
+                    localStorage.setItem('userPhoneNumber', phoneNumber);
+                    const voice = document.getElementById('voice').checked || document.getElementById('voiceOne').checked;
+                    if(voice) {
+                        window.location.href = './voice_request.html';
+                    } else {
+                        window.location.href = './request.html';
+                    }
                 } else {
-                    window.location.href = './request.html';
+                    const alertBtn = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Please Enter phone number
+                        <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
+                            <i aria-hidden="true">&times;</i>
+                        </button>
+                    </div>`;
+                    alertContainer.innerHTML = alertBtn;
+                    alertContainerOne.innerHTML = alertBtn;
                 }
-            } else {
-                alert('Please enter a phone number');
-            }
+            });
         });
     </script>
     <script src="assets/jquery/jquery-3.7.1.min.js"></script>

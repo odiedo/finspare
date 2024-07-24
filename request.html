@@ -1,94 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinSpare</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Odiedo Paul">
+    <title>myFinance</title>
     <link rel="stylesheet" href="assets/fonts/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/bootstrap.css" rel="stylesheet">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="#style.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+        main {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+            height: -webkit-fill-available;
+            max-height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .side-nav {
+            width: 5.5rem; 
+            padding-top: 10%; 
+            color: blue;
+        }
+        #submitPhoneNumber {
+            color: #fff;
+            background-color: blue;
+            font-weight: 900;
+        }
+        .request {
+            position: relative;
+            top: 50%;
+            left: 20%;
+            transform: translate(-20%, -50%);
+        }
+
+        .request .btn {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: blue;
+            color: #fff;
+            font-weight: 900;
+        }
+        .request .btn:hover {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: blue;
+            color: #fff;
+            font-weight: 900;
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }   
+        }
+        .items {
+            display: flex;
+            width: 100%;
+        }
+        .item-title-one {
+            width: 50%;
+            background-color: #0009;
+            text-align: center;
+            color: wheat;
+            font-weight: 900;
+            padding: 4px;
+            margin: 2px;
+        }
+        .item-title-two {
+            width: 30%;
+            background-color: #0009;
+            text-align: center;
+            color: wheat;
+            font-weight: 900;
+            padding: 4px;
+            margin: 2px;
+        }
+        .item-fields {
+            display: flex;
+            color: #002;
+        }
+        .item-fields input[type='text'] {
+            width: 50%;
+            background-color: #fff;
+            text-align: center;
+            font-weight: 900;
+            padding: 4px;
+            border: none;
+            margin: 2px;
+            outline: none;
+        }
+        .item-fields input[type='number'] {
+            width: 30%;
+            background-color: #fff;
+            text-align: center;
+            font-weight: 900;
+            padding: 4px;
+            border: none;
+            margin: 2px;
+            outline: none;
+        }
+        .item-fields button {
+            background-color: #fff;
+            width: 15%;
+            text-align: center;
+            color: red;
+            font-weight: 900;
+            padding: 4px;
+            border: none;
+        }
+        textarea {
+            width: 80%;
+            background-color: #fff;
+            font-weight: 900;
+            padding: 5px;
+            border: none;
+            margin: 2px;
+            outline: none;
+        }
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 5.5rem; 
+                padding-top: 50%; 
+                color: blue;
+            }
+            .request {
+                position: relative;
+                top: 70%;
+                left: 20%;
+                transform: translate(-20%, -70%);
+            }
+        }
+    </style>
 </head>
-<body>
-    <main id="sec">
-      <div class="container-fluid">
-        <div class="content">
-            <div class="row one bg-transparent border-0">
-                <div class="col-md-5 side-image p-0 m-0">
-                    <div class="side-image-one p-0 m-0 d-flex justify-content-center">
-                        <!-- <img src="assets/img/b1.jpg" alt=""> -->
-                        <div class="span-one mr-2">
-                            <span>FinSpare</span>
+<body class="d-flex h-100 text-dark">
+    <main>
+        <!-- Side nav bar -->
+        <div class="container-fluid" style="width: 100rem; background: #0001; overflow-x: scroll; ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row mb-4">
+                        <div class="col-md-12 shadow">
+                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
                         </div>
-                        <span class="pt-4">
-                            <i class="fas fa-car-battery fa-4x fas-onetr"></i><br>
-                            <i class="fas fas-one">Fast</i><br>
-                            <i class="fas fas-two">Affordable</i><br>
-                            <i class="fas fas-three">Reliable</i><br>
-                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="truck-details p-2 text-center">
+                                <h3 class="mt-2 text-left">Spare part Request</h3>
+                            </div>
+                            <!-- Display phone number -->
+                            <div id="phoneNumberDisplay" class="text-left"></div>
+                            <form id="requestForm">
+                                <div class="form-details">
+                                    <!-- <div class="audio-recording mt-3">
+                                        <label for="audioMessage" class="font-weight-bold">Audio Spare Request:</label><br>
+                                        <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone"></i><br> Start Recording</button>
+                                        <button type="button" id="stopRecordingBtn" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
+                                        <br>
+                                        <audio id="audioPlayback" controls style="display:none;"></audio>
+                                        <input type="hidden" name="audioMessage" id="audioMessage">
+                                    </div> -->
+                                    <div class="item-title1 d-flex justify-content-between mt-2 p-2">
+                                        <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
+                                    </div>
+                                    <div class="items">
+                                        <div class="item-title-one">
+                                            <span>Item(s)</span>
+                                        </div>
+                                        <div class="item-title-two">
+                                            <span>Quantity</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-field-details">
+                                        <div class="item-fields">
+                                            <input type="text" name="items[]" placeholder="Item name">
+                                            <input type="number" name="quantities[]" placeholder="Qnty">
+                                            <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="additional-item mt-1 mb-4">
+                                        <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
+                                        <textarea name="add_info" placeholder="Enter additional info here..." rows="2" id=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-buttons ml-2 d-flex justify-content-between">
+                                    <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i><br> Add item</button>
+                                    <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> <br> Send Request</button>
+                                </div>
+                            </form> 
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-7" id="driver">
-                    <div class="driver">
-                        <!-- Alert container -->
-                        <div id="alertContainer" class="container mt-2"></div>
-                        <div class="d-flex justify-content-between p-2 mt-1">
-                            <h3>FinSpare</h3>
+            </div>
+
+            <!-- Phone Number Modal -->
+            <div class="modal fade" id="phoneNumberModal" tabindex="-1" role="dialog" aria-labelledby="phoneNumberModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="truck-details p-2 text-center">
-                            <h3 class="mt-2 text-left">Spare part Request</h3>
-                            <span>Please enter the spare parts needed and click request to complete your order</span>
+                        <div class="modal-body">
+                            <div id="alertContainerReqOne" class="container mt-2"></div>
+                            <input type="number" id="userPhoneNumber" class="form-control" placeholder="Enter your phone number">
+                            <br>
+                            <p>Select your convenient method you wish to use to request for the sparepart</p>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="voice" id="voice">
+                                <label class="form-check-label" for="voice"><i class="fas fa-microphone"></i> Voice request</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="voice" id="text">
+                                <label class="form-check-label" for="text"><i class="fas fa-keyboard"></i> Type request</label>
+                            </div>
                         </div>
-                        <!-- Display phone number -->
-                        <div id="phoneNumberDisplay" class="text-left"></div>
-                        <form id="requestForm">
-                            <div class="form-details">
-                                <div class="audio-recording mt-3">
-                                    <label for="audioMessage" class="font-weight-bold">Audio Spare Request:</label><br>
-                                    <button type="button" id="startRecordingBtn" class="btn btn-primary p-2"><i class="fas fa-microphone"></i><br> Start Recording</button>
-                                    <button type="button" id="stopRecordingBtn" class="btn btn-secondary" disabled><i class="fas fa-pause"></i> <br> Stop Recording</button>
-                                    <br>
-                                    <audio id="audioPlayback" controls style="display:none;"></audio>
-                                    <input type="hidden" name="audioMessage" id="audioMessage">
-                                </div>
-                                <div class="item-title1 d-flex justify-content-between mt-2 p-2">
-                                    <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
-                                </div>
-                                <div class="items">
-                                    <div class="item-title-one">
-                                        <span>Item(s)</span>
-                                    </div>
-                                    <div class="item-title-two">
-                                        <span>Quantity</span>
-                                    </div>
-                                </div>
-                                <div class="item-field-details">
-                                    <div class="item-fields">
-                                        <input type="text" name="items[]" placeholder="Item name">
-                                        <input type="number" name="quantities[]" placeholder="Qnty">
-                                        <button class="remove-item border-0 bg-transparent"><i class="fas fa-times"></i></button>
-                                    </div>
-                                </div>
-                                <div class="additional-item mt-1 mb-4">
-                                    <label for="add_info" class="font-weight-bold">Additional Info:</label><br>
-                                    <textarea name="add_info" placeholder="Enter additional info here..." rows="2" id=""></textarea>
-                                </div>
-                            </div>
-                            <div class="form-buttons ml-2 d-flex justify-content-between">
-                                <button type="button" id="addItemBtn" class="add-item btn"><i class="fas fa-plus"></i><br> Add item</button>
-                                <button type="submit" class="request-item btn"><i class="fas fa-paper-plane"></i> <br> Send Request</button>
-                            </div>
-                        </div> 
-                    </form>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumber">Submit</button>
+                        </div>
+                    </div>
                 </div>
-            </div>        
+            </div>
+            <div class="modal fade" id="phoneNumberVoice" tabindex="-1" role="dialog" aria-labelledby="phoneNumberVoiceLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="alertContainerReq" class="container mt-2"></div>
+                            <input type="number" id="userPhoneNumberVoice" class="form-control" placeholder="Enter your phone number">
+                            <input type="radio" name="voice" id="voiceOne" checked hidden>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumberOne">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </main>
-  <script src="jquery/jquery-3.3.1.min.js"></script>
-  <script src="assets/dist/js/bootstrap.bundle.js"></script>
-  <script src="assets/dist/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.submitPhoneNumber').forEach(button => {
+            button.addEventListener('click', function() {
+                const phoneNumber = button.id === 'submitPhoneNumber' ? document.getElementById('userPhoneNumber').value : document.getElementById('userPhoneNumberVoice').value;
+                const alertContainer = document.getElementById('alertContainerReq');
+                const alertContainerOne = document.getElementById('alertContainerReqOne');
+                if(phoneNumber) {
+                    localStorage.setItem('userPhoneNumber', phoneNumber);
+                    const voice = document.getElementById('voice').checked || document.getElementById('voiceOne').checked;
+                    if(voice) {
+                        window.location.href = './voice_request.html';
+                    } else {
+                        window.location.href = './request.html';
+                    }
+                } else {
+                    const alertBtn = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Please Enter phone number
+                        <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
+                            <i aria-hidden="true">&times;</i>
+                        </button>
+                    </div>`;
+                    alertContainer.innerHTML = alertBtn;
+                    alertContainerOne.innerHTML = alertBtn;
+                }
+            });
+        });
+    </script>
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="assets/dist/js/bootstrap.bundle.js"></script>
+    <script src="assets/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
