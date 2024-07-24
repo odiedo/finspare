@@ -25,41 +25,32 @@
             overflow-x: auto;
             overflow-y: hidden;
         }
-        .dashboard {
-            padding: 20px;
+        .side-nav {
+            width: 5.5rem; 
+            padding-top: 10%; 
+            color: blue;
+        }
+        #submitPhoneNumber {
+            color: #fff;
+            background-color: blue;
+            font-weight: 900;
         }
         #requestForm {
             position: relative;
             top: 50%;
             left: 20%;
             transform: translate(-20%, -50%);
-            text-align: center;
         }
+
         .audio-recording .btn {
             height: 150px;
             width: 150px;
             border-radius: 50%;
-            background-color: blueviolet;
+            background-color: blue;
             color: #fff;
             font-weight: 900;
         }
-        .audio-recording .request-item {
-            width: 150px;
-            height: 40px;
-            border-radius: 5%;
-            background-color: blueviolet;
-            color: #fff;
-            font-weight: 900;
-        }
-        .audio-display {
-            width: 90%;
-        }
-
-        .audio-display audio {
-            width: 100%;
-        }
-
-        .balance .btn:hover {
+        .audio-recording .btn:hover {
             height: 150px;
             width: 150px;
             border-radius: 50%;
@@ -79,40 +70,54 @@
                 transform: scale(1);
             }   
         }
+
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 5.5rem; 
+                padding-top: 50%; 
+                color: blue;
+            }
+            .request {
+                position: relative;
+                top: 70%;
+                left: 20%;
+                transform: translate(-20%, -70%);
+            }
+        }
         
     </style>
 </head>
 <body class="d-flex h-100 text-dark">
     <main>
         <!-- Side nav bar -->
-        <div class="d-flex flex-column shadow flex-shrink-0 bg-light" style="width: 5.5rem; padding-top: 5%; color: blueviolet;">
+        <div class="d-flex flex-column shadow side-nav flex-shrink-0 bg-light">
             <a href="index.html" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
                 <span style="font-weight:900; color: #000; font-family: cursive;">FinSpare</span>
             </a>
             <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                 <li class="nav-item">
-                    <a href="analysis.html" class="nav-link  text-light py-3 " title="Withdraw" data-bs-toggle="tooltip" style="border: 1px solid ; background: blueviolet ;">
+                    <a href="analysis.html" class="nav-link  text-light py-3 " title="Withdraw" data-bs-toggle="tooltip" style="border: 1px solid ; background: blue ;">
                         <i class="fas fa-tachometer-alt"></i>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="nav-link py-3 border-bottom" title="Save" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#saveModal">
-                        <i class="fas fa-wave-square"  style="color: blueviolet" ></i>
+                        <i class="fas fa-wave-square"  style="color: blue" ></i>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip" data-bs-placement="right" data-toggle="modal" data-target="#withdrawModal">
-                        <i class="fas fa-microphone"  style="color: blueviolet"></i>
+                        <i class="fas fa-microphone"  style="color: blue"></i>
                     </a>
                 </li>
                 <li>
                     <a href="analysis.html" class="nav-link py-3 border-bottom" title="Withdraw" data-bs-toggle="tooltip">
-                        <i class="fas fa-toolbox"  style="color: blueviolet"></i>
+                        <i class="fas fa-toolbox"  style="color: blue"></i>
                     </a>
                 </li>
                 <li>
                     <a href="chama.html" class="nav-link py-3 border-bottom" title="Table Banking" data-bs-toggle="tooltip" data-bs-placement="right">
-                        <i class="fas fa-hand-holding"  style="color: blueviolet"></i>
+                        <i class="fas fa-hand-holding"  style="color: blue"></i>
                     </a>
                 </li>
             </ul>
@@ -134,7 +139,7 @@
                 <div class="col-md-12">
                     <div class="row mb-4">
                         <div class="col-md-12 shadow">
-                            <h3 class="text-center pt-4 px-4" style="color: blueviolet; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
+                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
                         </div>
                     </div>
                     <div class="row">
