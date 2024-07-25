@@ -41,7 +41,14 @@
             left: 20%;
             transform: translate(-20%, -50%);
         }
-
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+          }
         .request .btn {
             height: 150px;
             width: 150px;
@@ -157,7 +164,7 @@
                 <div class="col-md-12">
                     <div class="row mb-4">
                         <div class="col-md-12 shadow">
-                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
+                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; animation: fadeIn 3s ease-in; ">FinSpare Shop</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -165,12 +172,11 @@
                             <div class="truck-details p-2 text-center">
                                 <h3 class="mt-2 text-left">Spare part Request</h3>
                             </div>
+                            <div id="alertContainer"></div>
                             <!-- Display phone number -->
                             <div id="phoneNumberDisplay" class="text-left"></div>
-                            <form id="requestForm">
+                            <form id="requestFormType">
                                 <div class="form-details">
-                                    <!-- check the following part, really important -->
-                                    <input type="hidden" name="audioMessage" id="audioMessage">
                                     <div class="item-title1 d-flex justify-content-between mt-2 p-2">
                                         <h6 class="font-weight-bold">Items:</h6> <i class="fas fa-question-circle"></i>
                                     </div>
@@ -203,91 +209,8 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Phone Number Modal -->
-            <div class="modal fade" id="phoneNumberModal" tabindex="-1" role="dialog" aria-labelledby="phoneNumberModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="alertContainerReqOne" class="container mt-2"></div>
-                            <input type="number" id="userPhoneNumber" class="form-control" placeholder="Enter your phone number">
-                            <br>
-                            <p>Select your convenient method you wish to use to request for the sparepart</p>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="voice" id="voice">
-                                <label class="form-check-label" for="voice"><i class="fas fa-microphone"></i> Voice request</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="voice" id="text">
-                                <label class="form-check-label" for="text"><i class="fas fa-keyboard"></i> Type request</label>
-                            </div>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumber">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="phoneNumberVoice" tabindex="-1" role="dialog" aria-labelledby="phoneNumberVoiceLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="phoneNumberModalLabel">Enter Phone Number</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="alertContainerReq" class="container mt-2"></div>
-                            <input type="number" id="userPhoneNumberVoice" class="form-control" placeholder="Enter your phone number">
-                            <input type="radio" name="voice" id="voiceOne" checked hidden>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn submitPhoneNumber" id="submitPhoneNumberOne">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
-    <script>
-        document.querySelectorAll('.submitPhoneNumber').forEach(button => {
-            button.addEventListener('click', function() {
-                const phoneNumber = button.id === 'submitPhoneNumber' ? document.getElementById('userPhoneNumber').value : document.getElementById('userPhoneNumberVoice').value;
-                const alertContainer = document.getElementById('alertContainerReq');
-                const alertContainerOne = document.getElementById('alertContainerReqOne');
-                if(phoneNumber) {
-                    localStorage.setItem('userPhoneNumber', phoneNumber);
-                    const voice = document.getElementById('voice').checked || document.getElementById('voiceOne').checked;
-                    if(voice) {
-                        window.location.href = './voice_request.html';
-                    } else {
-                        window.location.href = './request.html';
-                    }
-                } else {
-                    const alertBtn = `
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Please Enter phone number
-                        <button type="button" class="border-0 btn m-0 p-1 close" data-dismiss="alert" aria-label="Close">
-                            <i aria-hidden="true">&times;</i>
-                        </button>
-                    </div>`;
-                    alertContainer.innerHTML = alertBtn;
-                    alertContainerOne.innerHTML = alertBtn;
-                }
-            });
-        });
-    </script>
     <script src="assets/jquery/jquery-3.7.1.min.js"></script>
     <script src="assets/dist/js/bootstrap.bundle.js"></script>
     <script src="assets/dist/js/bootstrap.min.js"></script>
