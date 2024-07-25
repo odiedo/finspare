@@ -64,14 +64,14 @@ exports.handler = async (event, context) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'your-email@gmail.com',
-      pass: 'your-email-password'
+      user: 'odiedopaul@gmail.com',
+      pass: 'oeor ibwd ewpn erqq'
     }
   });
 
   // Email options
   let mailOptions = {
-    to: 'your-email@gmail.com',
+    to: 'odiedopaul@gmail.com',
     subject: 'Spare part Request',
     html: emailBody,
     attachments: attachments
