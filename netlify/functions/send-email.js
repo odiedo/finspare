@@ -11,7 +11,12 @@ exports.handler = async (event, context) => {
   // Parse the request body
   const { items, quantities, addInfo, userPhoneNumber, audioBase64 } = JSON.parse(event.body);
 
-  let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  let emailBody;
+  let attachments = [];
+
+  if (items && quantities) {
+    // Text form submission
+    let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                         <thead>
                           <tr>
                             <th style="background-color: #f2f2f2;">Item</th>
@@ -19,40 +24,53 @@ exports.handler = async (event, context) => {
                           </tr>
                         </thead>
                         <tbody>`;
-  
-  items.forEach((item, index) => {
-    itemDetails += `<tr>
-                      <td>${item}</td>
-                      <td>${quantities[index]}</td>
-                    </tr>`;
-  });
+    
+    items.forEach((item, index) => {
+      itemDetails += `<tr>
+                        <td>${item}</td>
+                        <td>${quantities[index]}</td>
+                      </tr>`;
+    });
 
-  itemDetails += ` </tbody>
-                 </table>`;
-
-  // HTML content for the email
-  let emailBody = `
-    <div style="font-family: Arial, sans-serif; color: #333;">
-      <h2>Spare Parts Request</h2>
-      <p>Dear Finesse,</p>
-      <p>Please find below the spare parts request:</p>
-      ${itemDetails}
-      <p><strong>Additional Info:</strong></p>
-      <p>${addInfo}</p>
-      <br>
-      <p>Best regards,</p>
-      <p>Client: ${userPhoneNumber}</p>
-    </div>
-  `;
-
-  // Add audio attachment if available
-  let attachments = [];
-  if (audioBase64) {
+    itemDetails += ` </tbody>
+                   </table>`;
+    
+    emailBody = `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+        <h2>Spare Parts Request</h2>
+        <p>Dear Finesse,</p>
+        <p>Please find below the spare parts request:</p>
+        ${itemDetails}
+        <p><strong>Additional Info:</strong></p>
+        <p>${addInfo}</p>
+        <br>
+        <p>Best regards,</p>
+        <p>Client: ${userPhoneNumber}</p>
+      </div>
+    `;
+  } else if (audioBase64) {
+    // Audio form submission
+    emailBody = `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+        <h2>Audio Spare Parts Request</h2>
+        <p>Dear Finesse,</p>
+        <p>Please find the audio request attached.</p>
+        <br>
+        <p>Best regards,</p>
+        <p>Client: ${userPhoneNumber}</p>
+      </div>
+    `;
+    
     attachments.push({
       filename: 'audioMessage.mp3',
       content: audioBase64,
       encoding: 'base64'
     });
+  } else {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Invalid request data' })
+    };
   }
 
   // Create a transporter object using SMTP transport
@@ -66,7 +84,7 @@ exports.handler = async (event, context) => {
 
   // Email options
   let mailOptions = {
-    from:'odiedopaul@gmail.com',
+    from: 'odiedopaul@gmail.com',
     to: 'odiedopaul@gmail.com',
     subject: 'Spare part Request',
     html: emailBody,
