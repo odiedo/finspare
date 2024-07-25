@@ -17,20 +17,6 @@ This project is a web application designed to facilitate the process of requesti
 - **Storage**: Local Storage
 - **Deployment**: Netlify Functions
 
-## Pictorials:
-
-- **Voice request**
-![image](https://github.com/user-attachments/assets/bc09e8ba-90e3-4838-902e-7e1f3c1b4680)
-![image](https://github.com/user-attachments/assets/5085ca84-ce72-4fc6-aad7-6576c985ef94)
-![image](https://github.com/user-attachments/assets/c720f0f4-a34d-44dd-a393-3d725f093b71)
-
-- **Type request**
-![image](https://github.com/user-attachments/assets/2f48cef3-da28-40c3-8cc3-606bc26cf318)
-![image](https://github.com/user-attachments/assets/5093554c-fb91-4dfb-8f31-7b7f5157dcff)
-![image](https://github.com/user-attachments/assets/2b503d7b-3851-4294-8fab-8c0f0af62e2b)
-
-
-
 ## Getting Started
 
 ### Prerequisites
@@ -107,3 +93,15 @@ Contributions are welcome! Please follow these steps:
 ## Contact
 
 If you have any questions or need further assistance, feel free to contact me at `odiedopaul@gmail.com`.
+
+## Pictorials:
+
+- **Voice request**
+![image](https://github.com/user-attachments/assets/bc09e8ba-90e3-4838-902e-7e1f3c1b4680)
+![image](https://github.com/user-attachments/assets/5085ca84-ce72-4fc6-aad7-6576c985ef94)
+![image](https://github.com/user-attachments/assets/c720f0f4-a34d-44dd-a393-3d725f093b71)
+
+- **Type request**
+![image](https://github.com/user-attachments/assets/2f48cef3-da28-40c3-8cc3-606bc26cf318)
+![image](https://github.com/user-attachments/assets/5093554c-fb91-4dfb-8f31-7b7f5157dcff)
+![image](https://github.com/user-attachments/assets/2b503d7b-3851-4294-8fab-8c0f0af62e2b)
