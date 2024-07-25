@@ -87,7 +87,14 @@
                 transform: scale(1);
             }   
         }
-
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+          }
         @media (max-width: 768px) {
             .side-nav {
                 width: 5.5rem; 
@@ -156,7 +163,7 @@
                 <div class="col-md-12">
                     <div class="row mb-4">
                         <div class="col-md-12 shadow">
-                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; ">FinSpare Shop</h3>
+                            <h3 class="text-center pt-4 px-4" style="color: blue; font-weight: 900; text-shadow: 0 0 10px #fff; animation: fadeIn 3s ease-in; ">FinSpare Shop</h3>
                         </div>
                     </div>
                     <div class="row">
