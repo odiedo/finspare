@@ -11,7 +11,13 @@ exports.handler = async (event, context) => {
   // Parse the request body
   const { items, quantities, addInfo, userPhoneNumber, audioBase64 } = JSON.parse(event.body);
 
-  let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+  let emailBody = `
+    <div style="font-family: Arial, sans-serif; color: #333;">
+      <h2>Spare Parts Request</h2>
+      <p>Dear Finesse,</p>`;
+
+  if (items && quantities) {
+    let itemDetails = `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                         <thead>
                           <tr>
                             <th style="background-color: #f2f2f2;">Item</th>
@@ -19,31 +25,30 @@ exports.handler = async (event, context) => {
                           </tr>
                         </thead>
                         <tbody>`;
-  
-  items.forEach((item, index) => {
-    itemDetails += `<tr>
-                      <td>${item}</td>
-                      <td>${quantities[index]}</td>
-                    </tr>`;
-  });
+    
+    items.forEach((item, index) => {
+      itemDetails += `<tr>
+                        <td>${item}</td>
+                        <td>${quantities[index]}</td>
+                      </tr>`;
+    });
 
-  itemDetails += ` </tbody>
-                 </table>`;
+    itemDetails += ` </tbody>
+                   </table>`;
+    
+    emailBody += `<p>Please find below the spare parts request:</p>
+                  ${itemDetails}`;
+  }
 
-  // HTML content for the email
-  let emailBody = `
-    <div style="font-family: Arial, sans-serif; color: #333;">
-      <h2>Spare Parts Request</h2>
-      <p>Dear Finesse,</p>
-      <p>Please find below the spare parts request:</p>
-      ${itemDetails}
-      <p><strong>Additional Info:</strong></p>
-      <p>${addInfo}</p>
-      <br>
-      <p>Best regards,</p>
-      <p>Client: ${userPhoneNumber}</p>
-    </div>
-  `;
+  if (addInfo) {
+    emailBody += `<p><strong>Additional Info:</strong></p>
+                  <p>${addInfo}</p>`;
+  }
+
+  emailBody += `<br>
+                <p>Best regards,</p>
+                <p>Client: ${userPhoneNumber}</p>
+              </div>`;
 
   // Add audio attachment if available
   let attachments = [];
@@ -59,14 +64,14 @@ exports.handler = async (event, context) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'odiedopaul@gmail.com',
-      pass: 'oeor ibwd ewpn erqq'
+      user: 'your-email@gmail.com',
+      pass: 'your-email-password'
     }
   });
 
   // Email options
   let mailOptions = {
-    to: 'odiedopaul@gmail.com',
+    to: 'your-email@gmail.com',
     subject: 'Spare part Request',
     html: emailBody,
     attachments: attachments
